@@ -20,4 +20,41 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/add_class"
+        android:layout_width="128dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="24dp"
+        android:text="Add Class"
+        app:layout_constraintBottom_toTopOf="@+id/delete_class"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/back_to_home"
+        app:layout_constraintTop_toBottomOf="@+id/class_list"
+        tools:textSize="8sp" />
+
+    <Button
+        android:id="@+id/delete_class"
+        android:layout_width="127dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="165dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="26dp"
+        android:text="Delete Class"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/back_to_home"
+        app:layout_constraintTop_toBottomOf="@+id/add_class"
+        tools:textSize="8sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/class_list"
+        android:layout_width="409dp"
+        android:layout_height="618dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
