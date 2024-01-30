@@ -55,7 +55,6 @@ public class Classes extends AppCompatActivity {
                 data.add((String) instructor.getText());
                 data.add((String) time.getText());
                 data.add((String) location.getText());
-                System.out.println(courseInfo);
                 dialog.dismiss();
             }
         });
