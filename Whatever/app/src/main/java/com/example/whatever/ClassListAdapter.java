@@ -1,18 +1,24 @@
 package com.example.whatever;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.ViewHolder> {
+import java.util.List;
+import java.util.Map;
 
+public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.ViewHolder> {
+    Map<String, List<String>> data;
     @NonNull
     @Override
     public ClassListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.button_list_item, parent, false);
+        return new ViewHolder(v);
     }
 
     @Override
@@ -22,21 +28,25 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.View
 
     @Override
     public int getItemCount() {
-        return 0;
+        return data.size();
+    }
+
+    public ClassListAdapter(Map<String, List<String>> map) {
+        data = map;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textView;
+        private Button button;
 
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
 
-            textView = (TextView) view.findViewById(R.id.textView);
+            button = (Button) view.findViewById(R.id.button);
         }
 
         public TextView getTextView() {
-            return textView;
+            return button;
         }
     }
 }
