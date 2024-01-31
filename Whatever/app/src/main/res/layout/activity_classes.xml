@@ -9,52 +9,134 @@
 
     <Button
         android:id="@+id/back_to_home"
-        android:layout_width="118dp"
-        android:layout_height="75dp"
+        android:layout_width="378dp"
+        android:layout_height="44dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="250dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="688dp"
         android:text="Back to Homepage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/add_class"
-        android:layout_width="128dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="24dp"
-        android:text="Add Class"
-        app:layout_constraintBottom_toTopOf="@+id/delete_class"
+    <EditText
+        android:id="@+id/course_title"
+        android:layout_width="375dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="Course Title"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/course_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/course_list" />
+
+    <EditText
+        android:id="@+id/course_time"
+        android:layout_width="375dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="Time"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/course_instructor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/course_title" />
+
+    <EditText
+        android:id="@+id/course_instructor"
+        android:layout_width="377dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="18dp"
+        android:ems="10"
+        android:hint="Instructor"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/course_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/back_to_home"
-        app:layout_constraintTop_toBottomOf="@+id/class_list"
-        tools:textSize="8sp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/course_time" />
+
+    <EditText
+        android:id="@+id/course_location"
+        android:layout_width="380dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="18dp"
+        android:ems="10"
+        android:hint="Location"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/course_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/course_instructor" />
+
+    <ListView
+        android:id="@+id/course_list"
+        android:layout_width="400dp"
+        android:layout_height="221dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintBottom_toTopOf="@+id/course_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/delete_class"
-        android:layout_width="127dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="165dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="26dp"
+        android:id="@+id/course_edit"
+        android:layout_width="110dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
+        android:text="Edit Class"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/course_delete"
+        app:layout_constraintStart_toEndOf="@+id/course_add"
+        app:layout_constraintTop_toBottomOf="@+id/course_location" />
+
+    <Button
+        android:id="@+id/course_delete"
+        android:layout_width="123dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="13dp"
         android:text="Delete Class"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/back_to_home"
-        app:layout_constraintTop_toBottomOf="@+id/add_class"
-        tools:textSize="8sp" />
+        app:layout_constraintStart_toEndOf="@+id/course_edit"
+        app:layout_constraintTop_toBottomOf="@+id/course_location" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/class_list"
-        android:layout_width="409dp"
-        android:layout_height="618dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+    <Button
+        android:id="@+id/course_add"
+        android:layout_width="109dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="6dp"
+        android:text="Add Class"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/course_edit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/course_location" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
