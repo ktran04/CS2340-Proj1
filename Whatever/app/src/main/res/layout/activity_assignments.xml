@@ -6,4 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".Assignments">
 
+    <Button
+        android:id="@+id/back_to_home"
+        android:layout_width="118dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="28dp"
+        android:text="Back to Homepage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/add_assignments"
+        android:layout_width="128dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="24dp"
+        android:text="Add Assignment"
+        app:layout_constraintBottom_toTopOf="@+id/delete_assignments"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/back_to_home"
+        app:layout_constraintTop_toBottomOf="@+id/assignments_list"
+        tools:textSize="8sp" />
+
+    <Button
+        android:id="@+id/delete_assignments"
+        android:layout_width="127dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="165dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="26dp"
+        android:text="Delete Assignment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/back_to_home"
+        app:layout_constraintTop_toBottomOf="@+id/add_assignments"
+        tools:textSize="8sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/assignments_list"
+        android:layout_width="409dp"
+        android:layout_height="618dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
