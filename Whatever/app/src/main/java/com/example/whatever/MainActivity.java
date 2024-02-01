@@ -33,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button examsButton = findViewById(R.id.homeExamButton);
+
+        examsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Exams.class));
+            }
+        });
+
         Button toDoButton = findViewById(R.id.toDoButton);
         toDoButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -21,7 +21,7 @@ public class ToDoList extends AppCompatActivity {
     private Button addButton;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_to_do);
+        setContentView(R.layout.to_do);
 
         listView = findViewById(R.id.listView);
         addButton = findViewById(R.id.addToDoButton);
