@@ -7,52 +7,144 @@
     tools:context=".Assignments">
 
     <Button
-        android:id="@+id/back_to_home"
-        android:layout_width="118dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="250dp"
-        android:layout_marginBottom="28dp"
+        android:id="@+id/assignments_back"
+        android:layout_width="391dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="1dp"
         android:text="Back to Homepage"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/assignment_list"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/add_assignments"
-        android:layout_width="128dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="159dp"
+    <ListView
+        android:id="@+id/assignment_list"
+        android:layout_width="406dp"
+        android:layout_height="285dp"
+        android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
-        android:layout_marginEnd="24dp"
-        android:text="Add Assignment"
-        app:layout_constraintBottom_toTopOf="@+id/delete_assignments"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assignments_back" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="157dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/assignment_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assignment_list" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="7dp"
+        android:text="Sort Assignments By:"
+        app:layout_constraintBottom_toTopOf="@+id/assignment_name"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assignment_list"
+        app:layout_constraintVertical_bias="0.055" />
+
+    <EditText
+        android:id="@+id/assignment_name"
+        android:layout_width="392dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="6dp"
+        android:ems="10"
+        android:hint="Assignment Name"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/due_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/back_to_home"
-        app:layout_constraintTop_toBottomOf="@+id/assignments_list"
-        tools:textSize="8sp" />
+        app:layout_constraintStart_toEndOf="@+id/due_date"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <EditText
+        android:id="@+id/due_date"
+        android:layout_width="393dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="14dp"
+        android:ems="10"
+        android:hint="Due Date (MM/DD)"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/assignment_class"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assignment_name" />
+
+    <EditText
+        android:id="@+id/assignment_class"
+        android:layout_width="392dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="2dp"
+        android:ems="10"
+        android:hint="Associated Class"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/assignment_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/assignment_add"
+        app:layout_constraintTop_toBottomOf="@+id/due_date" />
 
     <Button
-        android:id="@+id/delete_assignments"
-        android:layout_width="127dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="165dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="26dp"
+        android:id="@+id/assignment_add"
+        android:layout_width="129dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="27dp"
+        android:text="Add Assignment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assignment_class" />
+
+    <Button
+        android:id="@+id/assignment_edit"
+        android:layout_width="129dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="24dp"
+        android:text="Edit Assignment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/assignment_delete"
+        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintStart_toEndOf="@+id/assignment_add"
+        app:layout_constraintTop_toBottomOf="@+id/assignment_class"
+        app:layout_constraintVertical_bias="0.454" />
+
+    <Button
+        android:id="@+id/assignment_delete"
+        android:layout_width="131dp"
+        android:layout_height="127dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="21dp"
         android:text="Delete Assignment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/back_to_home"
-        app:layout_constraintTop_toBottomOf="@+id/add_assignments"
-        tools:textSize="8sp" />
+        app:layout_constraintTop_toBottomOf="@+id/assignment_class"
+        app:layout_constraintVertical_bias="0.357" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/assignments_list"
-        android:layout_width="409dp"
-        android:layout_height="618dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
