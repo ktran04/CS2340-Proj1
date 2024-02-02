@@ -38,8 +38,8 @@ public class Classes extends AppCompatActivity {
         });
 
         ListView courseListView = (ListView) findViewById(R.id.course_list);
-        ArrayList<String> backingList = new ArrayList<>();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, backingList);
+        ArrayList<ClassEntry> backingList = new ArrayList<>();
+        ArrayAdapter<ClassEntry> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, backingList);
         courseListView.setAdapter(adapter);
 
         EditText enterClass = findViewById(R.id.course_title);
@@ -56,7 +56,7 @@ public class Classes extends AppCompatActivity {
                 String timeStr = enterTime.getText().toString();
                 String instructorStr = enterInstructor.getText().toString();
                 String locationStr = enterLocation.getText().toString();
-                backingList.add("Course: " + classStr + "\nTime: " + timeStr + "\nInstructor: " + instructorStr + "\nLocation: " + locationStr);
+                backingList.add(new ClassEntry(classStr, timeStr, instructorStr, locationStr));
                 adapter.notifyDataSetChanged();
 
                 enterClass.setText("");
@@ -71,22 +71,14 @@ public class Classes extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selected = position;
-                String[] splitByColon = backingList.get(position).split(":");
-                String now;
-                for (int i = 1; i < 5; i++) {
-                    now = "";
-                    for (int j = 1; j < splitByColon[i].length() && splitByColon[i].charAt(j) != '\n'; j++) {
-                        now += splitByColon[i].charAt(j);
-                    }
-                    splitByColon[i] = now;
-                }
+                ClassEntry now = backingList.get(position);
 
-                enterClass.setText(splitByColon[1]);
-                enterTime.setText(splitByColon[2]);
-                enterInstructor.setText(splitByColon[3]);
-                enterLocation.setText(splitByColon[4]);
+                enterClass.setText(now.getName());
+                enterTime.setText(now.getTime());
+                enterInstructor.setText(now.getInstructor());
+                enterLocation.setText(now.getLocation());
 
-                Toast.makeText(Classes.this, splitByColon[1] + " has been selected to be edited or deleted.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Classes.this, now.getName() + " has been selected to be edited or deleted.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -95,11 +87,11 @@ public class Classes extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (selected != -1) {
-                    String classStr = enterClass.getText().toString();
-                    String timeStr = enterTime.getText().toString();
-                    String instructorStr = enterInstructor.getText().toString();
-                    String locationStr = enterLocation.getText().toString();
-                    backingList.set(selected, "Course: " + classStr + "\nTime: " + timeStr + "\nInstructor: " + instructorStr + "\nLocation: " + locationStr);
+                    ClassEntry now = backingList.get(selected);
+                    now.setName(enterClass.getText().toString());
+                    now.setTime(enterTime.getText().toString());
+                    now.setInstructor(enterInstructor.getText().toString());
+                    now.setLocation(enterLocation.getText().toString());
                     adapter.notifyDataSetChanged();
 
                     enterClass.setText("");
@@ -128,34 +120,4 @@ public class Classes extends AppCompatActivity {
             }
         });
     }
-    /*
-    private void dialogMethod() {
-        LayoutInflater inflater = LayoutInflater.from(Classes.this);
-        View dialogLayout = inflater.inflate(R.layout.enter_class_details, null);
-        AlertDialog.Builder dialog = new AlertDialog.Builder(Classes.this);
-        dialog.setView(dialogLayout);
-        TextView name = (TextView) dialogLayout.findViewById(R.id.name);
-        TextView instructor = (TextView) dialogLayout.findViewById(R.id.instructor);
-        TextView time = (TextView) dialogLayout.findViewById(R.id.time);
-        TextView location = (TextView) dialogLayout.findViewById(R.id.location);
-        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                List<String> data = new ArrayList<>();
-                courseInfo.put((String) name.getText(), data);
-                data.add((String) instructor.getText());
-                data.add((String) time.getText());
-                data.add((String) location.getText());
-                dialog.dismiss();
-            }
-        });
-        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        dialog.show();
-    }
-    */
 }

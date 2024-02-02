@@ -39,8 +39,8 @@ public class Exams extends AppCompatActivity {
         });
 
         ListView courseListView = (ListView) findViewById(R.id.exam_list);
-        ArrayList<String> backingList = new ArrayList<>();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, backingList);
+        ArrayList<ExamEntry> backingList = new ArrayList<>();
+        ArrayAdapter<ExamEntry> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, backingList);
         courseListView.setAdapter(adapter);
 
         EditText date = findViewById(R.id.date);
@@ -57,13 +57,12 @@ public class Exams extends AppCompatActivity {
                 String timeStr = examTime.getText().toString();
                 String examLocationStr = examLocation.getText().toString();
                 //String locationStr = enterLocation.getText().toString();
-                backingList.add("Date: " + dateStr + "\nTime: " + timeStr + "\nExam Location: " + examLocationStr);
+                backingList.add(new ExamEntry(dateStr, timeStr, examLocationStr));
                 adapter.notifyDataSetChanged();
 
                 date.setText("");
                 examTime.setText("");
                 examLocation.setText("");
-                //enterLocation.setText("");
             }
         });
 
@@ -72,22 +71,13 @@ public class Exams extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selected = position;
-                String[] splitByColon = backingList.get(position).split(":");
-                String now;
-                for (int i = 1; i < 5; i++) {
-                    now = "";
-                    for (int j = 1; j < splitByColon[i].length() && splitByColon[i].charAt(j) != '\n'; j++) {
-                        now += splitByColon[i].charAt(j);
-                    }
-                    splitByColon[i] = now;
-                }
+                ExamEntry now = backingList.get(position);
 
-                date.setText(splitByColon[1]);
-                examTime.setText(splitByColon[2]);
-                examLocation.setText(splitByColon[3]);
-                //enterLocation.setText(splitByColon[4]);
+                date.setText(now.getDate());
+                examTime.setText(now.getTime());
+                examLocation.setText(now.getLocation());
 
-                Toast.makeText(Exams.this, splitByColon[1] + " has been selected to be edited or deleted.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Exams.this, "The exam on " + now.getTime() + " at " + now.getLocation() + " has been selected to be edited or deleted.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -96,17 +86,15 @@ public class Exams extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (selected != -1) {
-                    String dateStr = date.getText().toString();
-                    String timeStr = examTime.getText().toString();
-                    String examLocationStr = examLocation.getText().toString();
-                    //String locationStr = enterLocation.getText().toString();
-                    backingList.set(selected, "Date: " + dateStr + "\nTime: " + timeStr + "\nExam Location: " + examLocationStr);
+                    ExamEntry now = backingList.get(selected);
+                    now.setDate(date.getText().toString());
+                    now.setTime(examTime.getText().toString());
+                    now.setLocation(examLocation.getText().toString());
                     adapter.notifyDataSetChanged();
 
                     date.setText("");
                     examTime.setText("");
                     examLocation.setText("");
-                    //enterLocation.setText("");
                     selected = -1;
                 }
             }
