@@ -68,7 +68,7 @@ public class ToDoList<ItemEntry> extends AppCompatActivity {
 
                 item.setText(now);
 
-                Toast.makeText(ToDoList.this, now + " has been selected to be edited or deleted.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ToDoList.this,"\"" + now + "\" has been selected to be edited or deleted.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -77,9 +77,8 @@ public class ToDoList<ItemEntry> extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (selected != -1) {
-                    String now = "";
-                    now = backingList.get(selected);
-                    now = (item.getText().toString());
+
+                    backingList.set(selected, item.getText().toString());
 
                     adapter.notifyDataSetChanged();
 
