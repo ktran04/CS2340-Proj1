@@ -65,8 +65,23 @@
         android:text="Exams"
         app:layout_constraintBottom_toTopOf="@+id/toDoButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/assignmentsButton" />
+        app:layout_constraintTop_toBottomOf="@+id/assignmentsButton"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/notificationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="28dp"
+        android:text="Send Notification"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+    <!--android:onClick="sendNotification"/>-->
     <!--&lt;!&ndash;Notifications Button &ndash;&gt;-->
 
 <!--    <Button-->
